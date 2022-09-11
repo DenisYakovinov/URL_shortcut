@@ -1,3 +1,4 @@
+[![Java CI with Maven](https://github.com/DenisYakovinov/job4j_url_shortcut/actions/workflows/maven.yml/badge.svg)](https://github.com/DenisYakovinov/job4j_url_shortcut/actions/workflows/maven.yml)
 # job4j_url_shortcut
 
 Creating a service for safely connecting users to websites <br>
@@ -14,8 +15,6 @@ When using a shortened link, the application will redirect to the original URL. 
     <Li>Swagger</Li>
 </ul>
 in progress..
-
-![url_shortcut_db](img/url_shortcut_db.png) <br>
 
 Swagger UI documentation available via link ```localhost:8080/swagger-ui/index.html```
 ![swagger_ui](img/swagger_ui.png) <br>
@@ -55,6 +54,8 @@ this address will be resolved to:
 The service counts the number of calls for each address.<br>
 The user can get the number of visits to each link on the registered site
 ![statistic](img/statistic.png) <br>
+
+![url_shortcut_db](img/url_shortcut_db.png) <br>
 
 To run the app (need at least java 11), clone the project
 ```

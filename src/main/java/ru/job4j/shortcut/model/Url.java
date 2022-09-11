@@ -24,6 +24,7 @@ public class Url {
 
     @Column(name = "url")
     @URL(message = "This is an invalid URL")
+    @EqualsAndHashCode.Include
     private String urlValue;
 
     @Column(name = "code")
@@ -36,4 +37,10 @@ public class Url {
     @JoinColumn(name = "site_id")
     @NotNull(message = "The site of this URL can't be null")
     private Site site;
+
+    public static Url of(String urlValue) {
+        Url url = new Url();
+        url.setUrlValue(urlValue);
+        return url;
+    }
 }

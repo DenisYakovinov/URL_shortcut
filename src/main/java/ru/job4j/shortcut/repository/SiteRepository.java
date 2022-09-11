@@ -19,4 +19,6 @@ public interface SiteRepository extends CrudRepository<Site, Long> {
     Optional<Site> findByLoginWithUrls(@Param("sLogin") String login);
 
     Optional<Site> findByLogin(String login);
+
+    Optional<Site> findByName(String name);
 }

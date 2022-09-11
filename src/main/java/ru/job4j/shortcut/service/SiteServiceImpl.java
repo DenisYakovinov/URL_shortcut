@@ -34,7 +34,7 @@ public class SiteServiceImpl implements SiteService {
     @Override
     @Transactional
     public Site save(Site site) {
-        if (siteRepository.findByLogin(site.getName()).isPresent()) {
+        if (siteRepository.findByName(site.getName()).isPresent()) {
             throw new SiteNameReservedException(String.format("The site name '%s' already reserved please try again",
                     site.getName()));
         }
