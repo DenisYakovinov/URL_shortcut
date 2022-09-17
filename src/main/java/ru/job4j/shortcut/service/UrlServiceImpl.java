@@ -41,7 +41,7 @@ public class UrlServiceImpl implements UrlService {
 
     @Override
     @Transactional
-    public Url findByCode(String code) {
+    public Url getByCode(String code) {
         Url url = urlRepository.findByCode(code).orElseThrow(() -> new EntityNotFoundException(
                 String.format("url with code = %s wasn't found.", code)));
         incrementUrlVisitCount(code);

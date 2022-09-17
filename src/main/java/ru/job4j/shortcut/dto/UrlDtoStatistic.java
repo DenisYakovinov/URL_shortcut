@@ -18,4 +18,11 @@ public class UrlDtoStatistic {
 
     @Schema(description = "visit count")
     private long visitCount;
+
+    public static UrlDtoStatistic of(String urlValue, long visitCount) {
+        UrlDtoStatistic urlDtoStatistic = new UrlDtoStatistic();
+        urlDtoStatistic.setUrlValue(urlValue);
+        urlDtoStatistic.setVisitCount(visitCount);
+        return urlDtoStatistic;
+    }
 }

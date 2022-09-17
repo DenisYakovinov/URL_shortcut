@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.job4j.shortcut.model.Site;
 
 @Getter
 @Setter
@@ -21,4 +22,12 @@ public class SiteRegDto {
 
     @Schema(description = "shows that the site is registered")
     private boolean registration;
+
+    public static SiteRegDto of(String login, String password, boolean registration) {
+        SiteRegDto siteRegDto = new SiteRegDto();
+        siteRegDto.setLogin(login);
+        siteRegDto.setPassword(password);
+        siteRegDto.setRegistration(registration);
+        return siteRegDto;
+    }
 }

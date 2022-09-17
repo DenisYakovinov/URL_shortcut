@@ -1,4 +1,5 @@
 [![Java CI with Maven](https://github.com/DenisYakovinov/job4j_url_shortcut/actions/workflows/maven.yml/badge.svg)](https://github.com/DenisYakovinov/job4j_url_shortcut/actions/workflows/maven.yml)
+[![codecov](https://codecov.io/gh/DenisYakovinov/job4j_url_shortcut/branch/main/graph/badge.svg?token=NTNSVAPLNH)](https://codecov.io/gh/DenisYakovinov/job4j_url_shortcut)
 # job4j_url_shortcut
 
 Creating a service for safely connecting users to websites <br>
@@ -13,6 +14,7 @@ When using a shortened link, the application will redirect to the original URL. 
     <Li>liquibase</Li>
     <Li>slf4j, logback</Li>
     <Li>Swagger</Li>
+    <li>Junit, Mockito</li>
 </ul>
 in progress..
 

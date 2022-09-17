@@ -23,12 +23,4 @@ public class DataSourceConfig {
         dataSource.setPassword(password);
         return dataSource;
     }
-
-    @Bean
-    public SpringLiquibase liquibase(DataSource ds) {
-        SpringLiquibase liquibase = new SpringLiquibase();
-        liquibase.setChangeLog("classpath:liquibase-changeLog.xml");
-        liquibase.setDataSource(ds);
-        return liquibase;
-    }
 }

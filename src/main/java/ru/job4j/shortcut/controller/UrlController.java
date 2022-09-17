@@ -2,14 +2,12 @@ package ru.job4j.shortcut.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.CurrentSecurityContext;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import ru.job4j.shortcut.aspect.Loggable;
 import ru.job4j.shortcut.dto.UrlCreationDto;
@@ -42,6 +40,7 @@ public class UrlController {
     @PostMapping("/convert")
     @SecurityRequirement(name = "Bearer Authentication")
     @Operation(summary = "convert url to unique code (only for authorized site)")
+    @Transactional
     public ResponseEntity<UrlDto> urlRegistration(@RequestBody
                                                   @Parameter(description = "site creation DTO")
                                                   UrlCreationDto urlCreationDto,
@@ -58,7 +57,7 @@ public class UrlController {
     public ResponseEntity<Void> redirectToUrlByCode(@PathVariable("code")
                                                     @Parameter(description = "url code", required = true)
                                                     String code) {
-        Url url = urlService.findByCode(code);
+        Url url = urlService.getByCode(code);
         return ResponseEntity.status(HttpStatus.FOUND).header("Location", url.getUrlValue()).build();
     }
 
