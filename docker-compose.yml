@@ -8,9 +8,19 @@ services:
       POSTGRES_PASSWORD: password
       POSTGRES_DB: url_shortcut
       PGDATA: /var/lib/postgresql/data/pgdata
-      DB_HOST: 0.0.0.0
     volumes:
       - ./postgres_data:/var/lib/postgresql/data/
     restart: always
     ports:
       - 5432:5432
+  app:
+    image: shortcut
+    container_name: shortcut
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://url_shortcut_db:5432/url_shortcut
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=password
+    ports:
+      - 127.0.0.1:8080:8080
+    depends_on:
+      - url_shortcut_db
