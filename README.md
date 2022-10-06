@@ -59,27 +59,22 @@ The user can get the number of visits to each link on the registered site
 
 ![url_shortcut_db](img/url_shortcut_db.png) <br>
 
-To run the app (need at least java 11), clone the project
+Running via Docker Compose
+
+1. clone the project
 ```
 https://github.com/DenisYakovinov/job4j_url_shortcut.git
 ```
-then using terminal from root directory:<br>
-
-1. run db in docker
+2. go to the project root:
 ```
-docker-compose up url_shortcut_db
+cd job4j_url_shortcut
 ```
-2. then
+3. then build the application:
 ```
-mvn install
+docker-compose build
 ```
-3. and run
+4. and run db and app
 ```
-java -jar target/url_shortcut-1.0-SNAPSHOT.jar
+docker-compose up
 ```
-4. or
-```
-mvn spring-boot:run
-```
-
 

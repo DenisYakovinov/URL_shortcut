@@ -14,7 +14,9 @@ services:
     ports:
       - 5432:5432
   app:
-    image: shortcut
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: shortcut
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://url_shortcut_db:5432/url_shortcut
