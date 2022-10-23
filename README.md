@@ -59,7 +59,7 @@ The user can get the number of visits to each link on the registered site
 
 ![url_shortcut_db](img/url_shortcut_db.png) <br>
 
-Running via Docker Compose
+# Running via Docker Compose
 
 1. clone the project
 ```
@@ -77,4 +77,30 @@ docker-compose build
 ```
 docker-compose up
 ```
+
+# Running in a K8s cluster
+* docker, kubectl, minikube must be pre-installed on your computer
+* from the project root:
+
+1. create secret:
+```
+kubectl apply -f k8s/postgresdb-secret.yml
+```
+2. create configMap:
+```
+kubectl apply -f k8s/postgresdb-configmap.yml
+```
+3. create database deployment:
+```
+kubectl apply -f k8s/postgresdb-deployment.yml
+```
+4. create spring boot app deployment:
+```
+kubectl apply -f k8s/shortcutapp-deployment.yml
+```
+5. get the URL where we can connect to the service from outside.
+```
+minikube service spring-boot-service
+```
+![k8s](img/k8s.png) <br>
 

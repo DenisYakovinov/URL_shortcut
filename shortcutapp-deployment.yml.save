@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shortcut-app
+  labels:
+    app: shortcut-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shortcut-app
+  template:
+    metadata:
+      labels:
+        app: shortcut-app
+    spec:
+      containers:
+        - name: shortcut-app
+          image: denisyakovinov
+/
+job4j_url_shortcut
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgresdb-secret
+                  key: postgres-username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgresdb-secret
+                  key: postgres-password
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: postgresdb-configmap
+                  key: database_url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shortcut-app-service
+spec:
+  selector:
+    app: shortcut-app
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 32100
